@@ -16,8 +16,6 @@ class Auto extends vehicle{
     }
 }
 
-
-
 public class abstractMethods {
 
     public static void main(String[] args){
