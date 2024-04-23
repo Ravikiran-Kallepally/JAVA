@@ -81,6 +81,19 @@ public static void vowelOrConsonant(char a){
         }
     }
 
+    public static void isPrimeOwn(int number){
+        if(number<=1){
+            System.out.println("Not a prime number ");
+        }
+        for(int i=2;i<=Math.sqrt(number);i++){
+            if(number%i==0){
+                System.out.println("Not a prime number ");
+            }else{
+                System.out.println("It is a prime number ");
+            }
+        }
+    }
+
 //    public static void isPalindrome(int num){
 //    boolean isPalindromeNumber=false;
 //    int originalNumber= num;
@@ -145,7 +158,8 @@ public static void vowelOrConsonant(char a){
         largestOfThreeNumbers(2,3,4);
         leapOrNot(2024);
         grade(92);
-        isPrime(20);
+        //isPrime(20);
         isPalindrome();
+        isPrimeOwn(18);
     }
 }
