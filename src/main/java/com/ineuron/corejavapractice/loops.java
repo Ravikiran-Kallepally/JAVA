@@ -9,7 +9,6 @@
 //48) Implement a `do-while` loop to check if a number is Armstrong number.
 //49) Write a program to print numbers in reverse order using `for` loop.
 //50) Implement a `while` loop to check if a number is palindrome.
-
 package com.ineuron.corejavapractice;
 
 public class loops {
