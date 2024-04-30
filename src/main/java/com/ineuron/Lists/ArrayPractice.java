@@ -15,6 +15,44 @@ class Student{
     }
 }
 
+
+class Employee{
+    String name ;
+    double salary;
+    String title;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String toString(){
+        return  "Employee name : "+" "+this.name +"Employee salary : "+this.salary+" "+"Employee title : "+" "+this.title;
+    }
+
+    public Employee(String name, double salary, String title){
+        this.name=name;
+        this.salary=salary;
+        this.title=title;
+    }
+    public String getName(){
+        return name;
+    }
+    public double getSalary(){
+        return salary;
+    }
+    public String getTitle(){
+        return  title;
+    }
+}
+
 class Book{
     String name;
     double price;
@@ -77,6 +115,11 @@ public class ArrayPractice {
         ArrayList<Object> Student = new ArrayList<Object>();
         ArrayList<Integer> marks = new ArrayList<Integer>();
         ArrayList<Object> books = new ArrayList<Object>();
+        ArrayList<Object> Employees = new ArrayList<Object>();
+        Employees.add(new Employee("Virat",1234567.87,"King"));
+        Employees.add(new Employee("Rohith",12345698.6,"Hitman"));
+        Employees.add(new Employee("MSD",2134567.65,"Cool"));
+
         Book b = new Book("shopaholic",99.8);
        // Book1 b1 = new Book1("lean start up",93.7);
         books.add(new Book("Book 87", 250.0));
@@ -100,6 +143,7 @@ public class ArrayPractice {
         Collections.sort(str,String.CASE_INSENSITIVE_ORDER); //java sorting initially follows lexicographic order
 
         Student s = new Student();
+        //Employee e = new Employee();
         Student.add(s);
         marks.add(98);
         marks.add(99);
@@ -112,6 +156,9 @@ public class ArrayPractice {
 //                System.out.println("The book less than 99 is "+book);
 //            }
 //        }
+//        for(Employee e : Employees){
+//
+//        }
         System.out.println("ArrayList class in Lists package ");
         System.out.println("My numbers array "+myNumbers);
         System.out.println("MAX number in myNumbers array is "+max);
@@ -121,5 +168,7 @@ public class ArrayPractice {
         System.out.println(Student +"This is a student object updated  ");
         System.out.println("Average marks of a student : "+marksAverage);
         System.out.println(books+"This is a Book list object  ");
+        System.out.println("*******************************************");
+        System.out.println("This is a Employee list object "+Employees);
     }
 }
