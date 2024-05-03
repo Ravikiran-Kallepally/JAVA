@@ -26,7 +26,7 @@ public class Interrupt {
             t.interrupt();
 
         }catch (InterruptedException e){
-            System.out.println("Thread Interupped after 2 seconds" + e);
+            System.out.println("Thread Interrupted after 2 seconds" + e);
             e.printStackTrace();
         }
     }
