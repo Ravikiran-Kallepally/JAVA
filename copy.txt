@@ -1,3 +1,0 @@
-something to demo file
-two lines for demo
-you are done with writing to a new file
