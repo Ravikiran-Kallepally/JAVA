@@ -17,7 +17,8 @@ public class Insert {
             // 3) create statement object and send the query
             Statement statement = connection.createStatement();
             // 4) Execute the query and process the result set
-            String sqlInsertQuery = "INSERT INTO MyTable (id, name) VALUES (5, 'Emily');";
+            //String sqlInsertQuery = "INSERT INTO MyTable (id, name) VALUES (5, 'Emily');";
+            String sqlInsertQuery = String.format("INSERT INTO MyTable (id, name) VALUES (%d, '%s')", 7, "David");
             int rowsAffected = statement.executeUpdate(sqlInsertQuery);
             System.out.println("No of rows affected is : "+ rowsAffected);
             //ResultSet resultSet = statement.executeQuery(sqlDeleteQuery);
