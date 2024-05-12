@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class Update {
+public class Insert {
     public static void main(String[] args){
         // 1) Load and register the driver -> Automated from JDBC 4.X
         try {
@@ -17,9 +17,7 @@ public class Update {
             // 3) create statement object and send the query
             Statement statement = connection.createStatement();
             // 4) Execute the query and process the result set
-            String sqlInsertQuery = "UPDATE MyTable\n" +
-                    "SET name = 'Emily Brooke'\n" +
-                    "WHERE id = 5;";
+            String sqlInsertQuery = "INSERT INTO MyTable (id, name) VALUES (5, 'Emily');";
             int rowsAffected = statement.executeUpdate(sqlInsertQuery);
             System.out.println("No of rows affected is : "+ rowsAffected);
             //ResultSet resultSet = statement.executeQuery(sqlDeleteQuery);
@@ -32,4 +30,4 @@ public class Update {
             ce.printStackTrace();
         }
     }
-    }
+}
