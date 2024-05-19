@@ -1,5 +1,6 @@
 package AdvancedJAVA_NEW;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class InsertionApp {
@@ -31,7 +32,10 @@ public class InsertionApp {
                 }
             }
             //5)Handle SQL/other exceptions
-        }catch (SQLException se){
+        }catch (IOException ie){
+            ie.printStackTrace();
+        }
+        catch (SQLException se){
             se.printStackTrace();
         }catch (Exception e){
             e.printStackTrace();
