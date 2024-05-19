@@ -19,8 +19,8 @@ public class UpdateApp {
             Statement statement = connection.createStatement();
             System.out.println("Statement object created");
             //4)Execute the query and process the result set
-            String sqlInsertQuery = "UPDATE student SET sage = 30 WHERE sid = 4;\n";
-            int rowsAffected = statement.executeUpdate(sqlInsertQuery);
+            String sqlUpdateQuery = "UPDATE student SET sage = 30 WHERE sid = 4;\n";
+            int rowsAffected = statement.executeUpdate(sqlUpdateQuery);
             System.out.println("Number of rowsAffected are : "+rowsAffected);
             //6)Close all the resources
 
