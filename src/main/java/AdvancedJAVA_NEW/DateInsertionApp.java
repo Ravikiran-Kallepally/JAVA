@@ -1,52 +1,97 @@
 package AdvancedJAVA_NEW;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
+
+/**
+ * @author nitin
+ * @version JDK1.8
+ * Company : www.ineuron.ai
+ */
 public class DateInsertionApp {
-    public static void main(String[] args){
-        Connection connection =null;
-        PreparedStatement pstmt =null;
-        ResultSet resultSet =null;
-        //1) load and register the driver -> done automatically JDBC 4.X
-        //2) Establish the connection and recollect the flow
-        try{
-            connection= JDBCUtil.getJdbcConnection();
-            System.out.println("Connection Established successfully");
-            String sqlDateQuery = "UPDATE student SET enrollment_date = ? WHERE sname = ?;\n";
-            if(connection!=null){
-               pstmt= connection.prepareStatement(sqlDateQuery);
-            }
-            if(pstmt!=null){
-                //capture the input
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Please enter the name of the student");
-                String sname =scanner.next();
-                System.out.println("Please enter the date in format yyyy-MM-dd");
-                String enrollment_date =scanner.next();
-                System.out.println(sqlDateQuery);
-                //execute the query
-                pstmt.setString(1,enrollment_date);
-                pstmt.setString(2,sname);
-                int rowCount = pstmt.executeUpdate();
-                System.out.println("No of rows affected are :"+rowCount);
+
+    public static void main(String[] args) {
+
+        //Resources used
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        Scanner scanner = null;
+
+        //variables used
+        java.sql.Date sqlDob = null;
+        java.sql.Date sqlDom = null;
+
+        String name = null;
+        String dob = null;
+        String dom = null;
+
+        try {
+            connection = JDBCUtil.getJdbcConnection();
+
+            String sqlInsertQuery = "INSERT INTO users (name, dob, dom) VALUES (?, ?, ?)\n";
+            if (connection != null)
+                pstmt = connection.prepareStatement(sqlInsertQuery);
+
+            if (pstmt != null) {
+                scanner = new Scanner(System.in);
+
+                // collecting the inputs
+                if (scanner != null) {
+                    System.out.print("Enter the username :: ");
+                    name = scanner.next();
+
+                    System.out.print("Enter the dob(MM-dd-yyyy) :: ");
+                    dob = scanner.next();
+
+                    System.out.print("Enter the dom(yyyy-MM-dd) :: ");
+                    dom = scanner.next();
+                }
+
+                if (dob != null) {
+                    // Conversion of String to sqlDate
+                    SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+                    java.util.Date uDate = sdf.parse(dob);
+
+                    long value = uDate.getTime();
+                    sqlDob = new java.sql.Date(value);
+                }
+
+                if (dom != null)
+                    sqlDom = java.sql.Date.valueOf(dom);
+
+                // Set the input values to Query
+                pstmt.setString(1, name);
+                pstmt.setDate(2, sqlDob);
+                pstmt.setDate(3, sqlDom);
+
+                // execute the query
+                int rowAffected = pstmt.executeUpdate();
+                System.out.println("No of rows inserted inserted is :: " + rowAffected);
+
             }
 
-        }catch (IOException ie){
-            ie.printStackTrace();
-        }catch (SQLException se){
-            se.printStackTrace();
-        }catch (Exception e){
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
-        }finally {
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
             try {
                 JDBCUtil.cleanUp(connection, pstmt, null);
-            }catch (SQLException se){
-                se.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
+            scanner.close();
         }
+
     }
+
 }
