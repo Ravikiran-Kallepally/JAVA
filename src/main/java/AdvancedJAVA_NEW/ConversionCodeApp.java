@@ -19,6 +19,12 @@ public class ConversionCodeApp{
         System.out.println("String date input is "+sdate);
         System.out.println("Simple date format using parse converted date is "+udate);
         System.out.println("java.sql.date using udate.getTime() is "+sqlDate);
+        //Practice Standard input , where we don't need internal conversions
+        System.out.println("Enter the input in following format : yyyy-MM-dd");
+        String standardInput = scanner.next();
+        java.sql.Date sqlStandardInput = java.sql.Date.valueOf(standardInput);
+        System.out.println("Standard input from user "+standardInput);
+        System.out.println("Sql standard input "+sqlStandardInput);
         //close the resources
         scanner.close();
     }
